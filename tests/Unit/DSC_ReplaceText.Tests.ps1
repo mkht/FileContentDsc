@@ -107,7 +107,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileExpectedTextContent } `
                     -Verifiable
@@ -141,7 +141,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -160,7 +160,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileExpectedTextContent } `
                     -Verifiable
@@ -194,7 +194,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -213,7 +213,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileExpectedTextContent } `
                     -Verifiable
@@ -247,7 +247,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -266,7 +266,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileExpectedTextContent } `
                     -Verifiable
@@ -300,7 +300,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -321,7 +321,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileContent } `
                     -Verifiable
@@ -354,7 +354,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -376,7 +376,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileContent } `
                     -Verifiable
@@ -410,7 +410,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -431,7 +431,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileContent } `
                     -Verifiable
@@ -465,7 +465,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -487,7 +487,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileContent } `
                     -Verifiable
@@ -521,7 +521,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -543,7 +543,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $null } `
                     -Verifiable
@@ -576,7 +576,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -606,7 +606,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileContent } `
                     -Verifiable
@@ -638,7 +638,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -663,7 +663,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileContent } `
                     -Verifiable
@@ -696,7 +696,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -721,7 +721,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileContent } `
                     -Verifiable
@@ -754,7 +754,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
 
@@ -779,7 +779,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileContent } `
                     -Verifiable
@@ -809,7 +809,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
                 }
@@ -829,7 +829,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileExpectedTextContent } `
                     -Verifiable
@@ -859,7 +859,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
                 }
@@ -879,7 +879,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileContent } `
                     -Verifiable
@@ -910,7 +910,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
                 }
@@ -930,7 +930,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileExpectedSecretContent } `
                     -Verifiable
@@ -961,7 +961,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly 1
                 }
@@ -981,7 +981,7 @@ Setting3.Test=Value4
                     -Verifiable
 
                 Mock `
-                    -CommandName Get-Content `
+                    -CommandName Get-FileContent `
                     -ParameterFilter { $path -eq $script:testTextFile } `
                     -MockWith { $script:testFileContent }
 
@@ -1005,7 +1005,7 @@ Setting3.Test=Value4
                     Assert-MockCalled -CommandName Assert-ParametersValid -Exactly 1
 
                     Assert-MockCalled `
-                        -CommandName Get-Content `
+                        -CommandName Get-FileContent `
                         -Exactly 0
                 }
             }

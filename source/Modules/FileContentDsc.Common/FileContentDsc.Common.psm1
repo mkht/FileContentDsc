@@ -224,6 +224,50 @@ function Get-FileEncoding
 
 <#
     .SYNOPSIS
+        Gets file content with specified file encoding.
+
+    .DESCRIPTION
+        The function Get-FileContent function reads the contents of a text file with specified encoding.
+
+    .EXAMPLE
+        Get-FileContent -Path C:\text.txt -Encoding UTF8
+        This command returns the contents of a text file read as UTF8 encoded.
+#>
+function Get-FileContent
+{
+    [CmdletBinding()]
+    [OutputType([System.String])]
+    param
+    (
+        [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true)]
+        [System.String]
+        $Path,
+
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
+        [AllowEmptyString()]
+        [System.String]
+        $Encoding
+    )
+
+    $GetContentParam = @{
+        Path = $Path
+        Raw = $true
+    }
+
+    if ($Encoding -like 'UTF8*')
+    {
+        $GetContentParam = 'UTF8'
+    }
+    elseif (-not [string]::IsNullOrEmpty($Encoding))
+    {
+        $GetContentParam = $Encoding
+    }
+
+    Get-Content @GetContentParam
+}
+
+<#
+    .SYNOPSIS
         Writes or replaces the content in an item with new content.
         This is an enhanced version of the Set-Content that allows UTF8BOM and UTF8NoBOM encodings in PS v5.1 and earlier.
 
@@ -311,6 +355,7 @@ Export-ModuleMember -Function @(
     'Get-TextEolCharacter',
     'Set-IniSettingFileValue',
     'Get-IniSettingFileValue',
-    'Get-FileEncoding'
+    'Get-FileEncoding',
+    'Get-FileContent',
     'Set-TextContent'
 )

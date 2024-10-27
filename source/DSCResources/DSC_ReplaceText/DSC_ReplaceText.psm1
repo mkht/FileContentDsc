@@ -42,18 +42,7 @@ function Get-TargetResource
     Assert-ParametersValid @PSBoundParameters
 
     $fileEncoding = Get-FileEncoding $Path -ErrorAction SilentlyContinue
-    if ($null -eq $fileEncoding)
-    {
-        $fileContent = Get-Content -Path $Path -Raw
-    }
-    elseif ($fileEncoding -like 'UTF8*')
-    {
-        $fileContent = Get-Content -Path $Path -Raw -Encoding 'UTF8'
-    }
-    else
-    {
-        $fileContent = Get-Content -Path $Path -Raw -Encoding $fileEncoding
-    }
+    $fileContent = Get-FileContent -Path $Path -Encoding $fileEncoding
 
     Write-Verbose -Message ($script:localizedData.SearchForTextMessage -f `
             $Path, $Search)
@@ -155,18 +144,7 @@ function Set-TargetResource
     Assert-ParametersValid @PSBoundParameters
 
     $fileEncoding = Get-FileEncoding $Path -ErrorAction SilentlyContinue
-    if ($null -eq $fileEncoding)
-    {
-        $fileContent = Get-Content -Path $Path -Raw
-    }
-    elseif ($fileEncoding -like 'UTF8*')
-    {
-        $fileContent = Get-Content -Path $Path -Raw -Encoding 'UTF8'
-    }
-    else
-    {
-        $fileContent = Get-Content -Path $Path -Raw -Encoding $fileEncoding
-    }
+    $fileContent = Get-FileContent -Path $Path -Encoding $fileEncoding -ErrorAction SilentlyContinue
 
     $fileProperties = @{
         Path      = $Path
@@ -287,18 +265,7 @@ function Test-TargetResource
     }
 
     $fileEncoding = Get-FileEncoding $Path -ErrorAction SilentlyContinue
-    if ($null -eq $fileEncoding)
-    {
-        $fileContent = Get-Content -Path $Path -Raw
-    }
-    elseif ($fileEncoding -like 'UTF8*')
-    {
-        $fileContent = Get-Content -Path $Path -Raw -Encoding 'UTF8'
-    }
-    else
-    {
-        $fileContent = Get-Content -Path $Path -Raw -Encoding $fileEncoding
-    }
+    $fileContent = Get-FileContent -Path $Path -Encoding $fileEncoding
 
     Write-Verbose -Message ($script:localizedData.SearchForTextMessage -f `
             $Path, $Search)

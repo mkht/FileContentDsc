@@ -120,7 +120,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $false }
 
-                Mock -CommandName Get-Content
+                Mock -CommandName Get-FileContent
                 Mock -CommandName Get-FileEncoding
 
                 $script:result = $null
@@ -151,7 +151,7 @@ $($script:testAddedName)=$($script:testText)
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -Exactly -Times 0
 
@@ -165,7 +165,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content
+                Mock -CommandName Get-FileContent
                 Mock -CommandName Get-FileEncoding
 
                 $script:result = $null
@@ -196,7 +196,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Scope Context `
                         -Exactly -Times 1
@@ -212,7 +212,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileExpectedTextContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -246,7 +246,7 @@ $($script:testAddedName)=$($script:testText)
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -262,7 +262,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileExpectedTextContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -296,7 +296,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -315,7 +315,7 @@ $($script:testAddedName)=$($script:testText)
             }
 
             Context 'When the file does not exist' {
-                Mock -CommandName Get-Content
+                Mock -CommandName Get-FileContent
 
                 Mock -CommandName Get-FileEncoding `
                     -MockWith { $script:testCompliantEncoding.Encoding }
@@ -337,7 +337,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -358,7 +358,7 @@ $($script:testAddedName)=$($script:testText)
             }
 
             Context 'When the file is empty' {
-                Mock -CommandName Get-Content
+                Mock -CommandName Get-FileContent
 
                 Mock -CommandName Get-FileEncoding `
                     -MockWith { $script:testCompliantEncoding.Encoding }
@@ -380,7 +380,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -401,7 +401,7 @@ $($script:testAddedName)=$($script:testText)
             }
 
             Context 'When the file exists and contains a matching key that should exist' {
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -424,7 +424,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -445,7 +445,7 @@ $($script:testAddedName)=$($script:testText)
             }
 
             Context 'When the file exists and contains a matching key that should exist and contain a secret' {
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -469,7 +469,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -490,7 +490,7 @@ $($script:testAddedName)=$($script:testText)
             }
 
             Context 'When the file exists does not contain a matching key but key should exist' {
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -517,7 +517,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -538,7 +538,7 @@ $($script:testAddedName)=$($script:testText)
             }
 
             Context 'When the file exists and contains a key with a different case that should exist and IgnoreNameCase is True' {
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -562,7 +562,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -583,7 +583,7 @@ $($script:testAddedName)=$($script:testText)
             }
 
             Context 'When the file exists and does not contain a key with matching case and should not' {
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -606,7 +606,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -623,7 +623,7 @@ $($script:testAddedName)=$($script:testText)
             }
 
             Context 'When the file exists and contains a key with a different case but should not and IgnoreNameCase is True' {
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -646,7 +646,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -676,7 +676,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $false }
 
-                Mock -CommandName Get-Content
+                Mock -CommandName Get-FileContent
                 Mock -CommandName Get-FileEncoding
 
                 It 'Should not throw an exception' {
@@ -698,7 +698,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -Exactly -Times 0
 
@@ -712,7 +712,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $false }
 
-                Mock -CommandName Get-Content
+                Mock -CommandName Get-FileContent
                 Mock -CommandName Get-FileEncoding
 
                 It 'Should not throw an exception' {
@@ -734,7 +734,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -Exactly -Times 0
 
@@ -748,7 +748,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content
+                Mock -CommandName Get-FileContent
                 Mock -CommandName Get-FileEncoding
 
                 It 'Should not throw an exception' {
@@ -770,7 +770,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -785,7 +785,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content
+                Mock -CommandName Get-FileContent
                 Mock -CommandName Get-FileEncoding
 
                 It 'Should not throw an exception' {
@@ -807,7 +807,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -822,7 +822,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -847,7 +847,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -863,7 +863,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -888,7 +888,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -904,7 +904,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -929,7 +929,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -945,7 +945,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileExpectedTextContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -970,7 +970,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -986,7 +986,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileExpectedTextContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -1012,7 +1012,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -1028,7 +1028,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -1054,7 +1054,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -1070,7 +1070,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileExpectedSecretContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -1096,7 +1096,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -1112,7 +1112,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileExpectedSecretContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -1139,7 +1139,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -1155,7 +1155,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileExpectedTextContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -1181,7 +1181,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -1197,7 +1197,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileExpectedTextContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -1222,7 +1222,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -1238,7 +1238,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileExpectedTextContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -1264,7 +1264,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1
@@ -1280,7 +1280,7 @@ $($script:testAddedName)=$($script:testText)
                 Mock -CommandName Test-Path `
                     -MockWith { $true }
 
-                Mock -CommandName Get-Content `
+                Mock -CommandName Get-FileContent `
                     -MockWith { $script:testFileExpectedTextContent }
 
                 Mock -CommandName Get-FileEncoding `
@@ -1305,7 +1305,7 @@ $($script:testAddedName)=$($script:testText)
                         -Scope Context `
                         -Exactly -Times 1
 
-                    Assert-MockCalled -CommandName Get-Content `
+                    Assert-MockCalled -CommandName Get-FileContent `
                         -Scope Context `
                         -ParameterFilter { $path -eq $script:testTextFile } `
                         -Exactly -Times 1

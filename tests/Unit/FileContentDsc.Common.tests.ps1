@@ -117,8 +117,77 @@ InModuleScope $script:subModuleName {
         }
     }
 
+    Describe 'FileContentDsc.Common\Get-FileContent' {
+        $testTextFile = "$TestDrive\TestFile.txt"
+        $testCases = @(
+            @{
+                encoding    = 'ASCII'
+                value       = [byte[]](97, 98, 99)
+                expect = 'abc'
+            },
+            @{
+                encoding    = 'BigEndianUnicode'
+                value       = [byte[]](254, 255, 0, 97, 0, 98, 0, 99)
+                expect = 'abc'
+            },
+            @{
+                encoding    = 'BigEndianUTF32'
+                value       = [byte[]](0, 0, 254, 255, 0, 0, 0, 97, 0, 0, 0, 98, 0, 0, 0, 99)
+                expect = 'abc'
+            },
+            @{
+                encoding    = 'UTF8'
+                value       = [byte[]](239, 187, 191, 97, 98, 99)
+                expect = 'abc'
+            },
+            @{
+                encoding    = 'UTF8BOM'
+                value       = [byte[]](239, 187, 191, 97, 98, 99)
+                expect = 'abc'
+            },
+            @{
+                encoding    = 'UTF8NoBOM'
+                value       = [byte[]](97, 98, 99, 226, 157, 164)
+                expect = 'abc'
+            },
+            @{
+                encoding    = 'UTF32'
+                value       = [byte[]](255, 254, 0, 0, 97, 0, 0, 0, 98, 0, 0, 0, 99, 0, 0, 0)
+                expect = 'abc'
+            },
+            @{
+                encoding    = '' # Not specified
+                value       = [byte[]](97, 98, 99)
+                expect = 'abc'
+            }
+        )
+
+        Context 'When reading file contnet' {
+            It "Should return '<Expect>' for file with '<Encoding>' encoding" -TestCases $testCases {
+                param
+                (
+                    [Parameter()]
+                    [System.String]
+                    $Encoding,
+
+                    [Parameter()]
+                    [byte[]]
+                    $value,
+
+                    [Parameter()]
+                    [System.String]
+                    $expect
+                )
+
+                # Create a test file in byte format so that it does not depend on the PowerShell version.
+                [SYstem.IO.File]::WriteAllBytes($testTextFile, $value)
+                (Get-FileContent -Path $testTextFile -Encoding $Encoding) | Should -Be $expect
+            }
+        }
+    }
+
     Describe 'FileContentDsc.Common\Set-TextContent' {
-        $testTextFile = "TestDrive:\TestFile.txt"
+        $testTextFile = 'TestDrive:\TestFile.txt'
         $value = [string][char]0x0398 #Non-Ascii character
         $testCases = @(
             @{

@@ -48,20 +48,9 @@ function Get-TargetResource
     if (Test-Path -Path $Path)
     {
         $fileEncoding = Get-FileEncoding $Path -ErrorAction SilentlyContinue
-        if ($null -eq $fileEncoding)
-        {
-            $fileContent = Get-Content -Path $Path -Raw
-        }
-        elseif ($fileEncoding -like 'UTF8*')
-        {
-            $fileContent = Get-Content -Path $Path -Raw -Encoding 'UTF8'
-        }
-        else
-        {
-            $fileContent = Get-Content -Path $Path -Raw -Encoding $fileEncoding
-        }
+        $fileContent = Get-FileContent -Path $Path -Encoding $fileEncoding
 
-        if ($null -ne $fileContent)
+        if (-not [string]::IsNullOrEmpty($fileContent))
         {
             Write-Verbose -Message ($script:localizedData.SearchForKeyMessage -f $Path, $Name)
 
@@ -199,18 +188,7 @@ function Set-TargetResource
     Assert-ParametersValid @PSBoundParameters
 
     $fileEncoding = Get-FileEncoding $Path -ErrorAction SilentlyContinue
-    if ($null -eq $fileEncoding)
-    {
-        $fileContent = Get-Content -Path $Path -Raw -ErrorAction SilentlyContinue
-    }
-    elseif ($fileEncoding -like 'UTF8*')
-    {
-        $fileContent = Get-Content -Path $Path -Raw -Encoding 'UTF8' -ErrorAction SilentlyContinue
-    }
-    else
-    {
-        $fileContent = Get-Content -Path $Path -Raw -Encoding $fileEncoding -ErrorAction SilentlyContinue
-    }
+    $fileContent = Get-FileContent -Path $Path -Encoding $fileEncoding -ErrorAction SilentlyContinue
 
     $fileProperties = @{
         Path      = $Path
@@ -406,20 +384,9 @@ function Test-TargetResource
     }
 
     $fileEncoding = Get-FileEncoding $Path -ErrorAction SilentlyContinue
-    if ($null -eq $fileEncoding)
-    {
-        $fileContent = Get-Content -Path $Path -Raw
-    }
-    elseif ($fileEncoding -like 'UTF8*')
-    {
-        $fileContent = Get-Content -Path $Path -Raw -Encoding 'UTF8'
-    }
-    else
-    {
-        $fileContent = Get-Content -Path $Path -Raw -Encoding $fileEncoding
-    }
+    $fileContent = Get-FileContent -Path $Path -Encoding $fileEncoding
 
-    if ($null -eq $fileContent)
+    if ([string]::IsNullOrEmpty($fileContent))
     {
         Write-Verbose -Message ($script:localizedData.KeyValuePairFileIsEmpty -f $Path)
 
