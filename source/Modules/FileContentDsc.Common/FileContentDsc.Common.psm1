@@ -256,11 +256,11 @@ function Get-FileContent
 
     if ($Encoding -like 'UTF8*')
     {
-        $GetContentParam = 'UTF8'
+        $GetContentParam.Encoding = 'UTF8'
     }
     elseif (-not [string]::IsNullOrEmpty($Encoding))
     {
-        $GetContentParam = $Encoding
+        $GetContentParam.Encoding = $Encoding
     }
 
     Get-Content @GetContentParam
@@ -368,11 +368,11 @@ function Test-FileEncodingEqual
     [CmdletBinding()]
     [OutputType([bool])]
     param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory = $true)]
         [System.String]
         $FileEncoding,
 
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory = $true)]
         [System.String]
         $ExpectedEncoding
     )

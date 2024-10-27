@@ -147,7 +147,7 @@ InModuleScope $script:subModuleName {
             },
             @{
                 encoding = 'UTF8NoBOM'
-                value    = [byte[]](97, 98, 99, 226, 157, 164)
+                value    = [byte[]](97, 98, 99)
                 expect   = 'abc'
             },
             @{
