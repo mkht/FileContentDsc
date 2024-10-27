@@ -5,7 +5,7 @@ Import-Module -Name (Join-Path -Path $modulePath -ChildPath 'DscResource.Common'
 $script:localizedData = Get-LocalizedData -DefaultUICulture 'en-US'
 
 # Add the types for reading/writing INI files
-Add-Type -TypeDefinition @"
+Add-Type -TypeDefinition @'
     using System.IO;
     using System.Runtime.InteropServices;
     using System.Text;
@@ -36,7 +36,7 @@ Add-Type -TypeDefinition @"
             return sb.ToString();
         }
     }
-"@
+'@
 
 <#
     .SYNOPSIS
@@ -251,7 +251,7 @@ function Get-FileContent
 
     $GetContentParam = @{
         Path = $Path
-        Raw = $true
+        Raw  = $true
     }
 
     if ($Encoding -like 'UTF8*')

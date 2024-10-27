@@ -121,44 +121,44 @@ InModuleScope $script:subModuleName {
         $testTextFile = "$TestDrive\TestFile.txt"
         $testCases = @(
             @{
-                encoding    = 'ASCII'
-                value       = [byte[]](97, 98, 99)
-                expect = 'abc'
+                encoding = 'ASCII'
+                value    = [byte[]](97, 98, 99)
+                expect   = 'abc'
             },
             @{
-                encoding    = 'BigEndianUnicode'
-                value       = [byte[]](254, 255, 0, 97, 0, 98, 0, 99)
-                expect = 'abc'
+                encoding = 'BigEndianUnicode'
+                value    = [byte[]](254, 255, 0, 97, 0, 98, 0, 99)
+                expect   = 'abc'
             },
             @{
-                encoding    = 'BigEndianUTF32'
-                value       = [byte[]](0, 0, 254, 255, 0, 0, 0, 97, 0, 0, 0, 98, 0, 0, 0, 99)
-                expect = 'abc'
+                encoding = 'BigEndianUTF32'
+                value    = [byte[]](0, 0, 254, 255, 0, 0, 0, 97, 0, 0, 0, 98, 0, 0, 0, 99)
+                expect   = 'abc'
             },
             @{
-                encoding    = 'UTF8'
-                value       = [byte[]](239, 187, 191, 97, 98, 99)
-                expect = 'abc'
+                encoding = 'UTF8'
+                value    = [byte[]](239, 187, 191, 97, 98, 99)
+                expect   = 'abc'
             },
             @{
-                encoding    = 'UTF8BOM'
-                value       = [byte[]](239, 187, 191, 97, 98, 99)
-                expect = 'abc'
+                encoding = 'UTF8BOM'
+                value    = [byte[]](239, 187, 191, 97, 98, 99)
+                expect   = 'abc'
             },
             @{
-                encoding    = 'UTF8NoBOM'
-                value       = [byte[]](97, 98, 99, 226, 157, 164)
-                expect = 'abc'
+                encoding = 'UTF8NoBOM'
+                value    = [byte[]](97, 98, 99, 226, 157, 164)
+                expect   = 'abc'
             },
             @{
-                encoding    = 'UTF32'
-                value       = [byte[]](255, 254, 0, 0, 97, 0, 0, 0, 98, 0, 0, 0, 99, 0, 0, 0)
-                expect = 'abc'
+                encoding = 'UTF32'
+                value    = [byte[]](255, 254, 0, 0, 97, 0, 0, 0, 98, 0, 0, 0, 99, 0, 0, 0)
+                expect   = 'abc'
             },
             @{
-                encoding    = '' # Not specified
-                value       = [byte[]](97, 98, 99)
-                expect = 'abc'
+                encoding = '' # Not specified
+                value    = [byte[]](97, 98, 99)
+                expect   = 'abc'
             }
         )
 
