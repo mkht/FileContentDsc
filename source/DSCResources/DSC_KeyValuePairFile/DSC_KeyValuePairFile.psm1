@@ -249,9 +249,8 @@ function Set-TargetResource
             if ($results.Count -eq 0)
             {
                 if ($PSBoundParameters.ContainsKey('Encoding') -and `
-                    (($Encoding -eq $fileEncoding) -or `
-                        ($Encoding -eq 'UTF8' -and $fileEncoding -like 'UTF8*') -or `
-                        ($Encoding -eq 'UTF8NoBOM' -and $fileEncoding -eq 'ASCII')))
+                    (Test-FileEncodingEqual -FileEncoding $fileEncoding -ExpectedEncoding $Encoding)
+                )
                 {
                     # The Key does not exists and should not, and encoding is in the desired state, so don't do anything
                     return

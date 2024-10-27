@@ -265,4 +265,82 @@ InModuleScope $script:subModuleName {
             }
         }
     }
+
+    Describe 'FileContentDsc.Common\Test-FileEncodingEqual' {
+        $testSuccessCases = @(
+            @{
+                file   = 'ASCII'
+                expect = 'ASCII'
+            },
+            @{
+                file   = 'BigEndianUnicode'
+                expect = 'BigEndianUnicode'
+            },
+            @{
+                file   = 'UTF8BOM'
+                expect = 'UTF8BOM'
+            },
+            @{
+                file   = 'UTF8BOM'
+                expect = 'UTF8'
+            },
+            @{
+                file   = 'ASCII'
+                expect = 'UTF8NoBOM'
+            }
+        )
+
+        $testFailCases = @(
+            @{
+                file   = 'ASCII'
+                expect = 'BigEndianUnicode'
+            },
+            @{
+                file   = 'ASCII'
+                expect = 'UTF8BOM'
+            },
+            @{
+                file   = 'UTF8BOM'
+                expect = 'UTF8NoBOM'
+            },
+            @{
+                file   = 'UTF8BOM'
+                expect = 'UTF32'
+            }
+        )
+
+        Context 'When the file encoding matches the expected.' {
+            It "Should return True when the file is '<file>' and expected is '<expect>'" -TestCases $testSuccessCases {
+                param
+                (
+                    [Parameter()]
+                    [System.String]
+                    $File,
+
+                    [Parameter()]
+                    [System.String]
+                    $Expect
+                )
+
+                Test-FileEncodingEqual -FileEncoding $File -ExpectedEncoding $Expect | Should -BeTrue
+            }
+        }
+
+        Context 'When the file encoding does not matche the expected.' {
+            It "Should return False when the file is '<file>' and expected is '<expect>'" -TestCases $testFailCases {
+                param
+                (
+                    [Parameter()]
+                    [System.String]
+                    $File,
+
+                    [Parameter()]
+                    [System.String]
+                    $Expect
+                )
+
+                Test-FileEncodingEqual -FileEncoding $File -ExpectedEncoding $Expect | Should -BeFalse
+            }
+        }
+    }
 }

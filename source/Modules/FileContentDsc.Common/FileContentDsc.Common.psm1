@@ -351,11 +351,43 @@ function Set-TextContent
     Set-Content @setContentParams
 }
 
+<#
+    .SYNOPSIS
+        Tests if the file encoding matches the expected value.
+
+    .DESCRIPTION
+        Tests if the file encoding matches the expected value.
+        Note: This command returns a permissive test result for the presence or absence of a UTF8 BOM.
+        This means that if you expect "UTF8", the test will succeed with or without a BOM.
+
+    .EXAMPLE
+        Test-FileEncodingEqual -FileEncoding 'UTF8BOM' -ExpectedEncoding 'UTF8'
+#>
+function Test-FileEncodingEqual
+{
+    [CmdletBinding()]
+    [OutputType([bool])]
+    param (
+        [Parameter(Mandatory)]
+        [System.String]
+        $FileEncoding,
+
+        [Parameter(Mandatory)]
+        [System.String]
+        $ExpectedEncoding
+    )
+
+    ($ExpectedEncoding -eq $FileEncoding) -or `
+    ($ExpectedEncoding -eq 'UTF8' -and $FileEncoding -like 'UTF8*') -or `
+    ($ExpectedEncoding -eq 'UTF8NoBOM' -and $FileEncoding -eq 'ASCII')
+}
+
 Export-ModuleMember -Function @(
     'Get-TextEolCharacter',
     'Set-IniSettingFileValue',
     'Get-IniSettingFileValue',
     'Get-FileEncoding',
     'Get-FileContent',
-    'Set-TextContent'
+    'Set-TextContent',
+    'Test-FileEncodingEqual'
 )

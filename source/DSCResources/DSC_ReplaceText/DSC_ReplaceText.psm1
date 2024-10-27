@@ -285,9 +285,7 @@ function Test-TargetResource
         }
         if ($PSBoundParameters.ContainsKey('Encoding'))
         {
-            if (($Encoding -eq $fileEncoding) -or `
-                ($Encoding -eq 'UTF8' -and $fileEncoding -like 'UTF8*') -or `
-                ($Encoding -eq 'UTF8NoBOM' -and $fileEncoding -eq 'ASCII'))
+            if (Test-FileEncodingEqual -FileEncoding $fileEncoding -ExpectedEncoding $Encoding)
             {
                 # No matches found and encoding is in desired state
                 Write-Verbose -Message ($script:localizedData.StringNotFoundMessage -f `
